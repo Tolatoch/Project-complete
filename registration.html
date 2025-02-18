@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://www.ict.up.ac.th/maeka/admin/user/view.php -->
+<html lang="en" ng-app="ajboapp" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+  <!-- Data Table -->
+  <script src="./registration_files/jquery-3.7.0.js"></script>
+  <script src="./registration_files/jquery.dataTables.min.js"></script>
+  <script src="./registration_files/dataTables.bootstrap5.min.js"></script>
+  <link rel="stylesheet" href="./registration_files/bootstrap.min.css">
+  <link rel="stylesheet" href="./registration_files/dataTables.bootstrap5.min.css">
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./registration_files/all.min.css">
+  <link rel="stylesheet" href="./registration_files/mdb.min.css">
+  <link rel="stylesheet" href="./registration_files/style.css">
+
+  <!-- angularjs -->
+  <script src="./registration_files/angular.min.js"></script>
+  <script src="./registration_files/controller.js"></script>
+
+
+  <title>ทะเบียน อสม.</title>
+
+<style>INPUT:-webkit-autofill,SELECT:-webkit-autofill,TEXTAREA:-webkit-autofill{animation-name:onautofillstart}INPUT:not(:-webkit-autofill),SELECT:not(:-webkit-autofill),TEXTAREA:not(:-webkit-autofill){animation-name:onautofillcancel}@keyframes onautofillstart{}@keyframes onautofillcancel{}</style></head>
+
+<body ng-controller="user_crt" class="ng-scope">
+  <!-- MenuAdmin -->
+
+  <link href="./main_files/css2.css" rel="stylesheet">
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary sticky-top">
+    <!-- Container wrapper -->
+    <div class="container-fluid mx-md-4">
+        <button data-mdb-collapse-init="" class="navbar-toggler collapsed" type="button" data-mdb-target="#navbarLeftAlignExample" aria-controls="navbarLeftAlignExample" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarLeftAlignExample" data-mdb-collapse-initialized="true">
+
+            <img src="./main_files/logo.png" alt="" class="img-fluid navbar-brand" width="60">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="./main.html">หน้าหลัก</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a data-mdb-dropdown-init="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-expanded="false" data-mdb-dropdown-initialized="true">
+                        จัดการข้อมูลผู้สูงอายุ
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        
+                        <li>
+                            <a class="dropdown-item " href="./socil.html">1.
+                                บทบาททางสังคม</a>
+                        </li>
+                    </ul>
+                </li>
+
+                                    <li class="nav-item dropdown">
+                        <a data-mdb-dropdown-init="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-expanded="false" data-mdb-dropdown-initialized="true">
+                            สารสนเทศ 
+                           
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="./citizens.html">
+                                    Dashbord
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                
+
+                <li class="nav-item dropdown">
+                    <a href="registration.html" class="nav-link">
+                        จัดการข้อมูล อสม
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="job.html" class="nav-link">
+                        กลับเลือกประเภทงาน 
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+        <div class="dropdown">
+
+            <a data-mdb-dropdown-init="" class="link-dark me-3 dropdown-toggle hidden-arrow" href="https://www.ict.up.ac.th/maeka/admin/#" id="navbarDropdownMenuLink" role="button" aria-expanded="false" data-mdb-dropdown-initialized="true">
+
+                ADMIN ADMIN                
+
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+
+                <li>
+                    <a class="dropdown-item" href="https://www.ict.up.ac.th/maeka/admin/#" data-bs-toggle="modal" data-bs-target="#logout">ออกจากระบบ</a>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                คุณต้องการออกจาระบบใช่หรือไม่ ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
+                <a href="./login.html" class="btn btn-danger">ออกจากระบบ</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <h1 class="text-center mt-4">ทะเบียน อสม.</h1>
+
+    <div class="container-fluid">
+      <form ng-submit="getdata()" class="ng-pristine ng-valid">
+
+        <div class="row mb-3">
+          <div class="col-md-7 d-flex ">
+            <div data-mdb-input-init="" class="form-outline form-control " data-mdb-input-initialized="true">
+                <input type="text" id="searchbox" class="form-control ng-pristine ng-untouched ng-valid ng-empty" ng-model="f.nah">
+                <label class="form-label" for="searchbox" style="margin-left: 0px;">กรอกคำค้น </label>
+            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 81.6px;"></div><div class="form-notch-trailing"></div></div></div>
+            <button type="submit" class="btn btn-primary mx-2" data-mdb-ripple-init="" style="background-color: rgb(255, 153, 0);">ค้นหา</button>
+          </div>
+        </div>
+        <!-- Button trigger modal box-->
+        <a href="./new_ASM.html" class="btn btn-primary my-2" style="background-color: rgb(255, 153, 0);">
+           เพิ่มรายการใหม่
+          </a>
+      </form>
+    </div>
+
+    <div class="container-fluid ">
+
+      <div class="table-responsive ">
+        <div id="table-sample_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="table-sample_length"><label>แสดง <select name="table-sample_length" aria-controls="table-sample" class="form-select form-select-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> รายการ</label></div></div><div class="col-sm-12 col-md-6"></div></div><div class="row dt-row"><div class="col-sm-12"><table id="table-sample" class="table no-footer dataTable" ng-init="getdata()" aria-describedby="table-sample_info" style="">
+          <thead>
+            <tr><th scope="col" class="col-md-5 sorting sorting_asc" tabindex="0" aria-controls="table-sample" rowspan="1" colspan="1" aria-label="ชื่อ-สกุล /บัตรประชาชน: activate to sort column descending: activate to sort column descending" style="width: 571.825px;" aria-sort="ascending">ชื่อ-สกุล /บัตรประชาชน</th><th scope="col" class="sorting" tabindex="0" aria-controls="table-sample" rowspan="1" colspan="1" aria-label="บ้านเลขที่: activate to sort column ascending: activate to sort column ascending" style="width: 183.525px;">บ้านเลขที่</th><th scope="col" class="sorting" tabindex="0" aria-controls="table-sample" rowspan="1" colspan="1" aria-label="หมู่ที่: activate to sort column ascending: activate to sort column ascending" style="width: 123.562px;">หมู่ที่</th><th scope="col" class="sorting" tabindex="0" aria-controls="table-sample" rowspan="1" colspan="1" aria-label="โทรศัพท์: activate to sort column ascending: activate to sort column ascending" style="width: 174.175px;">โทรศัพท์</th><th scope="col" class="sorting" tabindex="0" aria-controls="table-sample" rowspan="1" colspan="1" aria-label="การจัดการ: activate to sort column ascending: activate to sort column ascending" style="width: 200.113px;">การจัดการ</th></tr>
+          </thead>
+          <tbody>
+
+            <!-- ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype --><!-- end ngRepeat: i in alltype -->
+          <tr >
+              <td class="ng-binding sorting_1"><b class="ng-binding"> ธัญญรัชต์ สุริยะ</b><br>1 4111 00003 54 6</td>
+              <td class="ng-binding">478</td>
+              <td class="ng-binding">5</td>
+              <td class="ng-binding">082 660 1975</td>
+              <td>
+                <button class="btn btn-danger" ng-click="confirm_del(i)">ลบ</button>
+                <button class="btn btn-warning" ng-click="updateForm(i)">แก้ไข</button>
+              </td>
+            </tr><tr >
+              <td class="ng-binding sorting_1"><b class="ng-binding">น.ส จตุพร คำมี</b><br>3 5601 00899 64 1</td>
+              <td class="ng-binding">555</td>
+              <td class="ng-binding">11</td>
+              <td class="ng-binding">088 157 367</td>
+              <td>
+                <button class="btn btn-danger" ng-click="confirm_del(i)">ลบ</button>
+                <button class="btn btn-warning" ng-click="updateForm(i)">แก้ไข</button>
+              </td>
+            </tr><tr >
+              <td class="ng-binding sorting_1"><b class="ng-binding">น.ส ฐนิดา ยศสกุลชัย</b><br>5 5501 01068 68 5</td>
+              <td class="ng-binding"></td>
+              <td class="ng-binding">15</td>
+              <td class="ng-binding">064 206 374</td>
+              <td>
+                <button class="btn btn-danger" ng-click="confirm_del(i)">ลบ</button>
+                <button class="btn btn-warning" ng-click="updateForm(i)">แก้ไข</button>
+              </td>
+            </tr><tr >
+              <td class="ng-binding sorting_1"><b class="ng-binding">น.ส นงคราญ ปวงวงค์</b><br>3 5601 00606 67 9</td>
+              <td class="ng-binding"></td>
+              <td class="ng-binding">4</td>
+              <td class="ng-binding">087 172 153</td>
+              <td>
+                <button class="btn btn-danger" ng-click="confirm_del(i)">ลบ</button>
+                <button class="btn btn-warning" ng-click="updateForm(i)">แก้ไข</button>
+              </td>
+            </tr><tr >
+              <td class="ng-binding sorting_1"><b class="ng-binding">น.ส นัฐจารี ธิมา</b><br>1 5601 00100 22 1</td>
+              <td class="ng-binding"></td>
+              <td class="ng-binding">11</td>
+              <td class="ng-binding">086 190 628</td>
+              <td>
+                <button class="btn btn-danger" ng-click="confirm_del(i)">ลบ</button>
+                <button class="btn btn-warning" ng-click="updateForm(i)">แก้ไข</button>
+              </td>
+            </tr><tr >
+              <td class="ng-binding sorting_1"><b class="ng-binding">น.ส น้อย วังมูล</b><br>3 5601 00619 76 2</td>
+              <td class="ng-binding"></td>
+              <td class="ng-binding">4</td>
+              <td class="ng-binding">089 557 256</td>
+              <td>
+                <button class="btn btn-danger" ng-click="confirm_del(i)">ลบ</button>
+                <button class="btn btn-warning" ng-click="updateForm(i)">แก้ไข</button>
+              </td>
+            </tr><tr >
+              <td class="ng-binding sorting_1"><b class="ng-binding">น.ส บัวผัน นาชัยเริ่ม</b><br>3 4699 00288 85 9</td>
+              <td class="ng-binding"></td>
+              <td class="ng-binding">17</td>
+              <td class="ng-binding">061 315 367</td>
+              <td>
+                <button class="btn btn-danger" ng-click="confirm_del(i)">ลบ</button>
+                <button class="btn btn-warning" ng-click="updateForm(i)">แก้ไข</button>
+              </td>
+            </tr><tr >
+              <td class="ng-binding sorting_1"><b class="ng-binding">น.ส ปราณี ธรรมสาร</b><br>3 5601 00606 91 1</td>
+              <td class="ng-binding"></td>
+              <td class="ng-binding">4</td>
+              <td class="ng-binding">089 636 711</td>
+              <td>
+                <button class="btn btn-danger" ng-click="confirm_del(i)">ลบ</button>
+                <button class="btn btn-warning" ng-click="updateForm(i)">แก้ไข</button>
+              </td>
+            </tr><tr >
+              <td class="ng-binding sorting_1"><b class="ng-binding">น.ส ปริยานุช แลณี</b><br>8 5703 84017 66 6</td>
+              <td class="ng-binding"></td>
+              <td class="ng-binding">17</td>
+              <td class="ng-binding">081 000 344</td>
+              <td>
+                <button class="btn btn-danger" ng-click="confirm_del(i)">ลบ</button>
+                <button class="btn btn-warning" ng-click="updateForm(i)">แก้ไข</button>
+              </td>
+            </tr><tr >
+              <td class="ng-binding sorting_1"><b class="ng-binding">น.ส พลับพลึง กาวิตา</b><br>1 5601 90006 45 9</td>
+              <td class="ng-binding"></td>
+              <td class="ng-binding">17</td>
+              <td class="ng-binding">098 105 578</td>
+              <td>
+                <button class="btn btn-danger" ng-click="confirm_del(i)">ลบ</button>
+                <button class="btn btn-warning" ng-click="updateForm(i)">แก้ไข</button>
+              </td>
+            </tr></tbody>
+        </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="table-sample_info" role="status" aria-live="polite">แสดง 1 ถึง 10 จาก 100 รายการ</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="table-sample_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="table-sample_previous"><a aria-controls="table-sample" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" class="page-link">ก่อนหน้า</a></li><li class="paginate_button page-item active"><a href="https://www.ict.up.ac.th/maeka/admin/user/view.php#" aria-controls="table-sample" role="link" aria-current="page" data-dt-idx="0" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="https://www.ict.up.ac.th/maeka/admin/user/view.php#" aria-controls="table-sample" role="link" data-dt-idx="1" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="https://www.ict.up.ac.th/maeka/admin/user/view.php#" aria-controls="table-sample" role="link" data-dt-idx="2" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="https://www.ict.up.ac.th/maeka/admin/user/view.php#" aria-controls="table-sample" role="link" data-dt-idx="3" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="https://www.ict.up.ac.th/maeka/admin/user/view.php#" aria-controls="table-sample" role="link" data-dt-idx="4" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item disabled" id="table-sample_ellipsis"><a aria-controls="table-sample" aria-disabled="true" role="link" data-dt-idx="ellipsis" tabindex="-1" class="page-link">…</a></li><li class="paginate_button page-item "><a href="https://www.ict.up.ac.th/maeka/admin/user/view.php#" aria-controls="table-sample" role="link" data-dt-idx="9" tabindex="0" class="page-link">10</a></li><li class="paginate_button page-item next" id="table-sample_next"><a href="https://www.ict.up.ac.th/maeka/admin/user/view.php#" aria-controls="table-sample" role="link" data-dt-idx="next" tabindex="0" class="page-link">ถัดไป</a></li></ul></div></div></div></div>
+      </div>
+    </div>
+
+
+
+
+    <!-- Modal เพิ่มข้อมูล-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              เพิ่ม อสม.
+            </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Modal Insert -->
+
+            <form ng-submit="senddata()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength">
+              <div class="row mb-3">
+
+                <label for="input1" class="col-sm-2 col-form-label">เลขบัตรประชาชน</label>
+                <div class="col-sm-10">
+                  <input type="text" required="" maxlength="13" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength" id="input1" ng-model="f.IDCard" ng-keyup="isIDCardValid()" ng-class="{&#39;custom-form-control&#39; : checkLength()}">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="input2" class="form-label">คำนำหน้า</label>
+                <div class="">
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" id="input2" ng-model="f.prefix" ng-value="">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="input2" class="col-sm-2 col-form-label">ชื่อ</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" id="input2" ng-model="f.firstName">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="input2" class="col-sm-2 col-form-label">นามสกุล</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" id="input2" ng-model="f.lastName">
+                </div>
+              </div>   
+              <div class="row mb-3">
+                <label for="input2" class="col-sm-2 col-form-label">อายุ</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-empty" id="input2" ng-model="f.age">
+                </div>
+              </div>                           
+              <div class="row mb-3">
+                <label for="input2" class="col-sm-2 col-form-label">บ้านเลขที่</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" id="input2" ng-model="f.Num_Home" required="">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="input2" class="col-sm-2 col-form-label">หมู่ที่</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" id="input2" ng-model="f.Moo" required="">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="input2" class="col-sm-2 col-form-label">บทบาท</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" id="input2" ng-model="f.role" required="">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="input2" class="col-sm-2 col-form-label">โทรศัพท์</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" id="input2" ng-model="f.phone" required="">
+                </div>
+              </div>
+
+
+
+              <div class="row mb-3">
+                <div class="col-sm-10 offset-sm-2"></div>
+              </div>
+              <button type="submit" class="btn btn-primary" aria-label="Close">
+                บันทึก
+              </button>
+            </form>
+
+            <!-- insert -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal แก้ไขข้อมูล-->
+    <div class="modal fade" id="xyz" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="xyzLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h1>แก้ไขข้อมูล อสม</h1>
+
+            <form ng-submit="update()" class="ng-pristine ng-invalid ng-invalid-required">
+              <div class="row mb-3">
+                <label for="input1" class="col-sm-2 col-form-label">บัตรประชาชน</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" readonly="readonly" id="input1" ng-model="f.IDCard" disabled="">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="input2" class="col-sm-2 col-form-label">คำนำหน้า</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" id="input2" ng-model="f.prefix">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="input3" class="col-sm-2 col-form-label">ชื่อ</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" id="input3" ng-model="f.firstName">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="input4" class="col-sm-2 col-form-label">นามสกุล</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" id="input4" ng-model="f.lastName">
+                </div>
+              </div>   
+              <div class="row mb-3">
+                <label for="input5" class="col-sm-2 col-form-label">อายุ</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-empty" id="input5" ng-model="f.age">
+                </div>
+              </div>                           
+              <div class="row mb-3">
+                <label for="input6" class="col-sm-2 col-form-label">บ้านเลขที่</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" id="input6" ng-model="f.Num_Home">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="input7" class="col-sm-2 col-form-label">หมู่ที่</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" id="input7" ng-model="f.Moo" required="">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="input8" class="col-sm-2 col-form-label">บทบาท</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" id="input8" ng-model="f.role" required="">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="input9" class="col-sm-2 col-form-label">โทรศัพท์</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" id="input9" ng-model="f.phone" required="">
+                </div>
+              </div>
+              <button type="button" class="btn btn-warning" data-bs-dismiss="modal" aria-label="Close">
+                ยกเลิก
+              </button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">
+                บันทึก
+              </button>
+            </form>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal ยืนยันการลบ -->
+    <div class="modal fade" id="checkdel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">กรุณายืนยันการลบข้อมูล</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>เลขบัตรประชาชน</th>
+                  <th>ชื่อ-สกุล</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="ng-binding"></td>
+                  <td class="ng-binding"> </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
+
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" ng-click="deldata(del.IDCard)">
+              ยืนยันการลบ </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal แจ้งเตือน -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-warning">แจ้งเตือน
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body ng-binding"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal">
+              ปิด
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="./registration_files/mdb.umd.min.js"></script>
+    <script type="text/javascript" src="./registration_files/bootstrap.min.js"></script>
+
+</body></html>

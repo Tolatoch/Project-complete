@@ -1,0 +1,17 @@
+
+body {
+    background-image: url('paper.jpg');
+    font-family: 'Noto Sans Thai', sans-serif;
+
+  }
+  .large-checkbox {
+      transform: scale(1.4);
+    }
+
+  .custom-form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border: 2.5px solid #198754;
+  }
+
+
